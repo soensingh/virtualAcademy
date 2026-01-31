@@ -1,0 +1,55 @@
+.adminPage {
+  min-height: 100vh;
+  padding: 80px 6vw 60px;
+  background: #0b0b0b;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.status {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.9);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 14px;
+}
+
+.table th {
+  font-weight: 700;
+  color: #8A38F5;
+  background: rgba(138, 56, 245, 0.08);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}

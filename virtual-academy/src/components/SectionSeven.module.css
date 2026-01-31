@@ -1,0 +1,416 @@
+.comboSection {
+  width: 100%;
+  min-height: 100vh;
+  padding: 12vh 0 80px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.earthCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.earthLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.earthOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(138, 56, 245, 0.12), transparent 55%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.contentWrap {
+  position: relative;
+  z-index: 3;
+  padding: 0 40px;
+}
+
+/* Title Area */
+.comboTitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #8A38F5;
+}
+
+.comboSubtitle {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.25rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 50px;
+  font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+  .contentWrap {
+    padding: 0 28px;
+  }
+
+  .comboTitle {
+    font-size: 2.4rem;
+  }
+
+  .comboSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentWrap {
+    padding: 0 20px;
+  }
+
+  .comboTitle {
+    font-size: 2rem;
+  }
+
+  .comboSubtitle {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentWrap {
+    padding: 0 16px;
+  }
+
+  .comboTitle {
+    font-size: 1.7rem;
+  }
+
+  .comboSubtitle {
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+  }
+}
+
+.cardsViewport {
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
+  padding: 0 0 0 40px;
+  box-sizing: border-box;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cardsViewport::-webkit-scrollbar {
+  height: 0;
+}
+
+.cardsTrack {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+
+.courseCard {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  width: 280px;
+  flex: 0 0 280px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faded {
+  opacity: 0.15;
+  transform: scale(0.95);
+  filter: grayscale(100%) blur(1px);
+  pointer-events: none;
+}
+
+.highlighted {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(138, 56, 245, 0.2);
+  border-color: rgba(138, 56, 245, 0.5);
+  z-index: 10;
+}
+
+.cardTop {
+  height: 170px;
+  background: #2b2b2b;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #111;
+}
+
+
+.cardBody {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.cardTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.cardMeta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.cardMeta li::before {
+  content: "•";
+  color: #8A38F5;
+  margin-right: 8px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.priceOld {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: line-through;
+  font-size: 13px;
+}
+
+.priceNew {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.badgePrimary {
+  background: #0b5cff;
+  color: #fff;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.badgeNew {
+  background: #e28b0d;
+  color: #121212;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.cardActions {
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+}
+
+.primaryButton {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  background: #0b5cff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Search Bar Styles */
+.searchContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 18px 30px;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  backdrop-filter: blur(12px);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  caret-color: #8A38F5;
+}
+
+.searchInput:focus {
+  background: rgba(20, 20, 20, 0.8);
+  border-color: #8A38F5;
+  box-shadow: 0 0 0 4px rgba(138, 56, 245, 0.15), 0 8px 30px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+  .searchContainer {
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+
+  .searchInput {
+    padding: 16px 26px;
+    font-size: 15px;
+  }
+
+  .cardsTrack {
+    gap: 20px;
+  }
+
+  .courseCard {
+    width: 260px;
+    flex: 0 0 260px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchContainer {
+    max-width: 460px;
+    margin-bottom: 28px;
+  }
+
+  .searchInput {
+    padding: 14px 22px;
+    font-size: 14px;
+  }
+
+  .cardsTrack {
+    gap: 16px;
+  }
+
+  .courseCard {
+    width: 240px;
+    flex: 0 0 240px;
+    max-height: 200px;
+  }   
+
+  .cardBody {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentWrap h2{
+    font-size: 40px;
+  }
+  
+  .searchContainer {
+    max-width: 100%;
+    margin-bottom: 22px;
+  }
+
+  .searchInput {
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+
+  .courseCard {
+    width: 220px;
+    flex: 0 0 220px;
+    max-height: 440px;
+  }
+
+  .cardTop {
+    height: 150px;
+  }
+}
+
