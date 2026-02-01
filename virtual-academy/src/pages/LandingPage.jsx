@@ -9,7 +9,7 @@ import styles from "./LandingPage.module.css";
 import SectionTwo from "../components/SectionTwo.jsx";
 import SectionThree from "../components/SectionThree.jsx";
 import SectionBootcamp from "../components/SectionBootcamp.jsx";
-import Footer from "../components/footer.jsx";
+import Footer from "../components/Footer.jsx";
 import Reviews from "../components/Reviews.jsx";
 
 const LazySection = ({ id, className, children, rootRef, keepMounted }) => {
