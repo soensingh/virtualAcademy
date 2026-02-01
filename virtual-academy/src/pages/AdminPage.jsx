@@ -5,10 +5,12 @@ const AdminPage = () => {
   const [items, setItems] = useState([]);
   const [status, setStatus] = useState("loading");
 
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
   useEffect(() => {
     const load = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/form");
+        const response = await fetch(`${apiBaseUrl}/api/form`);
         if (!response.ok) {
           throw new Error("Failed to fetch form data");
         }

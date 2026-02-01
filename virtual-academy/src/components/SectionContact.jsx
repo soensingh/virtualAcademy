@@ -18,6 +18,8 @@ const SectionContact = () => {
     });
   };
 
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,7 +32,7 @@ const SectionContact = () => {
     };
 
     try {
-      const response = await fetch("http://192.168.1.254:3000/api/form", {
+      const response = await fetch(`${apiBaseUrl}/api/form`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
